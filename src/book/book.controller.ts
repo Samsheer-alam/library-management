@@ -19,11 +19,11 @@ import { BookService } from './book.service';
 import { BorrowBookDto } from './dto/borrow-book.dto';
 import { CreateBookDto } from './dto/create-book.dto';
 import { Roles } from '../auth/decorators/roles.decorator';
-import { RoleType } from 'src/shared/enum/role-type.enum';
+import { RoleType } from '../shared/enum/role-type.enum';
 import { JwtAuthGuard } from 'src/auth/guard/jwt.guard';
 import { FilterBooksDto } from './dto/filter-books.dto';
 import { Pagination } from 'nestjs-typeorm-paginate';
-import { Borrow } from 'src/database/entities/borrow.entity';
+import { Borrow } from '../database/entities/borrow.entity';
 
 @Controller('book')
 export class BookController {

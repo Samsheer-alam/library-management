@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from 'src/database/entities/user.entity';
+import { User } from '../database/entities/user.entity';
 import { UserRepository } from 'src/database/repositories/user.repository';
-import { RoleType } from 'src/shared/enum/role-type.enum';
+import { RoleType } from '../shared/enum/role-type.enum';
 import { CreateUserDto } from './dto/create-user.dto';
 
 @Injectable()

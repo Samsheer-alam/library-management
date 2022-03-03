@@ -14,4 +14,5 @@ export const config = () => ({
     entities: [User, Book, Borrow],
     synchronize: true,
   },
+  jwtSecret: process.env.JWT_SECRET,
 });

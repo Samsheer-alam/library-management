@@ -1,5 +1,5 @@
 import { IsEnum, IsNotEmpty, IsOptional } from 'class-validator';
-import { OrderBy } from 'src/shared/enum/orderby-type';
+import { OrderBy } from '../../shared/enum/orderby-type';
 
 export class FilterBooksDto {
   @IsOptional()

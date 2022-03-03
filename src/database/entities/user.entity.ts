@@ -1,6 +1,14 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BeforeInsert,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Borrow } from './borrow.entity';
-import { RoleType } from 'src/shared/enum/role-type.enum';
+import { RoleType } from '../../shared/enum/role-type.enum';
+import * as bcrypt from 'bcrypt';
+
 @Entity()
 export class User {
   @PrimaryGeneratedColumn('uuid')
@@ -27,4 +35,12 @@ export class User {
 
   @OneToMany(() => Borrow, (borrow) => borrow.student) borrowedBooks: Borrow[];
   @OneToMany(() => Borrow, (borrow) => borrow.admin) borrowAdmin: Borrow[];
+
+  @BeforeInsert()
+  async hashPassword() {
+    if (this.password) {
+      const salt = await bcrypt.genSalt();
+      this.password = await bcrypt.hash(this.password, salt);
+    }
+  }
 }

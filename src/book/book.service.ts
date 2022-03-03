@@ -6,28 +6,28 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Book } from '../database/entities/book.entity';
-import { BookRepository } from 'src/database/repositories/book.repository';
+import { BookRepository } from '../database/repositories/book.repository';
 import { User } from '../database/entities/user.entity';
 
-import { BorrowRepository } from 'src/database/repositories/borrow.repository';
+import { BorrowRepository } from '../database/repositories/borrow.repository';
 import { BorrowBookDto } from './dto/borrow-book.dto';
 import { CreateBookDto } from './dto/create-book.dto';
-import { UserRepository } from 'src/database/repositories/user.repository';
-import { RoleType } from 'src/shared/enum/role-type.enum';
+import { UserRepository } from '../database/repositories/user.repository';
+import { RoleType } from '..//shared/enum/role-type.enum';
 import { getManager } from 'typeorm';
 import { FilterBooksDto } from './dto/filter-books.dto';
 import { Pagination } from 'nestjs-typeorm-paginate';
-import { Borrow } from 'src/database/entities/borrow.entity';
+import { Borrow } from '../database/entities/borrow.entity';
 
 @Injectable()
 export class BookService {
   constructor(
     @InjectRepository(BookRepository)
-    private bookRepository: BookRepository,
+    private readonly bookRepository: BookRepository,
     @InjectRepository(BorrowRepository)
-    private borrowRepository: BorrowRepository,
+    private readonly borrowRepository: BorrowRepository,
     @InjectRepository(UserRepository)
-    private userRepository: UserRepository,
+    private readonly userRepository: UserRepository,
   ) {}
 
   addBook(createBookDto: CreateBookDto): Promise<Book> {
